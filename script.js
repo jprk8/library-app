@@ -5,15 +5,12 @@ function Book(title, author, pages) {
     this.author = author;
     this.pages = pages;
     this.read = false;
-    this.info = function() {
-        infoString = `${this.title};${this.author};${this.pages};`;
-        if (this.read) return infoString += "read";
-        else return infoString += "not read yet";
-    }
 }
 
+const hobbit = new Book('The Hobbit', 'J.R.R. Tolkiens', 295);
 const ender = new Book(`Ender's Game`, 'Orson Scott Card', 324);
 const morrie = new Book('Tuesdays with Morrie', 'Mitch Albom', 192);
+myLibrary.push(hobbit);
 myLibrary.push(ender);
 myLibrary.push(morrie);
 listBooks();
@@ -27,6 +24,7 @@ function listBooks () {
         bookContainer.removeChild(item);
     })
 
+    let delIndex = 0;
     for (const book of myLibrary) {
         const bookContainer = document.querySelector('.book-container');
         const showBook = document.createElement('div');
@@ -52,6 +50,19 @@ function listBooks () {
         showBook.appendChild(showAuthor);
         showBook.appendChild(showPages);
         showBook.appendChild(showRead);
+
+        //add delete button and function
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.setAttribute('index', delIndex);
+        deleteBtn.addEventListener('click', () => {
+            myLibrary.splice(deleteBtn.getAttribute('index'), 1);
+            listBooks();
+        });
+        showBook.appendChild(deleteBtn);
+        delIndex++;
+
         bookContainer.appendChild(showBook);
     }
 }
@@ -74,7 +85,6 @@ closeBtn.addEventListener('click', (event) => {
     event.preventDefault();
     dialog.close();
 });
-
 
 confirmBtn.addEventListener('click', (event) => {
     //newBook = Book(inputTitle.value, inputAuthor.value, inputPages.value);

@@ -121,7 +121,7 @@ p, h1, h2, h3, h4, h5, h6 {
 dialog {
     margin: 150px 380px;
     background-color: #eee;
-    border-radius: 10% 25%;
+    border-radius: 24px;
     width: 400px;
 }
 
@@ -137,6 +137,10 @@ dialog form {
     flex-direction: column;
     gap: 20px;
     padding: 12px;
+}
+
+dialog form label {
+    letter-spacing: 1px;
 }
 
 dialog button {
@@ -168,6 +172,7 @@ input[type='checkbox'] {
 
 .read-label {
     font-size: 18px;
+    letter-spacing: 0;
 }
 
 .btn-container {
@@ -175,4 +180,23 @@ input[type='checkbox'] {
     display: flex;
     gap: 12px;
     margin-top: 12px;
+}
+
+.delete-btn {
+    background-color: #222;
+    color: #eee;
+    padding: 4px 12px;
+    align-self: end;
+    font-size: 18px;
+    border: 2px solid rgb(255, 59, 48);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: rgb(255, 59, 48);
+}
+
+.delete-btn:active {
+    outline: 2px solid #eee;
 }
