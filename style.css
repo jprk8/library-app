@@ -1,0 +1,92 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    background-color: #222;
+    color: #eee;
+    font-family: serif;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
+
+.container {
+    display: grid;
+    grid-auto-flow: row;
+    padding: 12px 24px;
+    gap: 24px;
+}
+
+.header {
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.page-title {
+    font-size: 32px;
+}
+
+.main-menu {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.menu-btn {
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 20px;
+    font-weight: 800;
+}
+
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 36px;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    border: 4px solid rgb(216, 190, 137);
+    background-color: rgb(44, 32, 28);
+    gap: 12px;
+    padding: 20px;
+    border-radius: 10% 25%;
+}
+
+.book .title {
+    font-size: 28px;
+    height: calc(28px * 4);
+    text-transform: uppercase;
+    overflow: hide;
+}
+
+.book .author {
+    font-size: 20px;
+}
+
+.book .read {
+    align-self: end;
+}
