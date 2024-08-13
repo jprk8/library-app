@@ -12,7 +12,7 @@
     <div class='container'>
         <div class='main-menu'>
             <div class='page-title'>Your Books</div>
-            <button class='menu-btn'>+ NEW BOOK</button>
+            <button type='button' class='menu-btn'>+ NEW BOOK</button>
         </div>
         <div class='book-container'>
             <div class='book'>
@@ -26,26 +26,26 @@
 
     <dialog>
         <div class='dialog-title'>Add New Book</div>
-        <form>
+        <form id='add-book-form' method='dialog'>
             <div class='form-row'>
                 <label for='title'><div>TITLE</div></label>
-                <input type='text' id='title' name='title' />
+                <input type='text' id='title' name='title' required />
             </div>
             <div class='form-row'>
                 <label for='author'><div>AUTHOR</div></label>
-                <input type='text' id='author' name='author' />
+                <input type='text' id='author' name='author' required />
             </div>
             <div class='form-row'>
                 <label for='pages'><div>PAGES</div></label>
-                <input type='text' id='pages' name='pages' />
+                <input type='number' id='pages' name='pages' required />
             </div>
             <div class='form-row'>
-                <input type='checkbox' id='read' name='read' value='yes' />
-                <label for='read'>Already read</label>
+                <input type='checkbox' id='read' name='read' value='true' />
+                <label for='read' class='read-label'>Already Read</label>
             </div>
             <div class='btn-container'>
-                <button class='confirm-btn'>Confirm</button>
-                <button class='close-btn'>Close</button>
+                <button type='submit' class='confirm-btn'>Confirm</button>
+                <button class='close-btn' formmethod='dialog'>Close</button>
             </div>
         </form>
     </dialog>

@@ -34,7 +34,6 @@ p, h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-auto-flow: row;
     padding: 12px 24px;
-    gap: 24px;
     background-color: #444;
 }
 
@@ -45,7 +44,7 @@ p, h1, h2, h3, h4, h5, h6 {
     background-color: #222;
     border-bottom: 12px double #7f1d1d;
     padding: 30px 20px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .page-title {
@@ -57,6 +56,7 @@ p, h1, h2, h3, h4, h5, h6 {
     display: flex;
     gap: 24px;
     align-items: center;
+    margin-bottom: 36px;
 }
 
 .menu-btn {
@@ -105,6 +105,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .book .author {
     font-size: 20px;
     font-style: italic;
+    text-transform: capitalize;
 }
 
 .book .read {
@@ -127,17 +128,19 @@ dialog {
 .dialog-title {
     font-size: 28px;
     font-weight: 800;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    padding: 12px;
 }
 
 dialog form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 12px;
 }
 
 dialog button {
-    padding: 4px 20px;
+    padding: 10px 20px;
     border-radius: 10px;
     background-color: white;
     border: 1px solid #222;
@@ -149,8 +152,27 @@ dialog button:hover {
     cursor: pointer;
 }
 
+input[type='text'],
+input[type='number'] {
+    font-size: 20px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid grey;
+}
+
+input[type='checkbox'] {
+    margin-left: 2px;
+    margin-right: 2px;
+    transform: scale(1.2);
+}
+
+.read-label {
+    font-size: 18px;
+}
+
 .btn-container {
     align-self: end;
     display: flex;
     gap: 12px;
+    margin-top: 12px;
 }
