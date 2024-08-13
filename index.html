@@ -8,11 +8,11 @@
     <title>Library App</title>
 </head>
 <body>
+    <div class='header'>{The Great Library of Nothingburger}</div>
     <div class='container'>
-        <div class='header'>Library App</div>
         <div class='main-menu'>
-            <div class='page-title'>My Books</div>
-            <button class='menu-btn'>NEW BOOK</button>
+            <div class='page-title'>Your Books</div>
+            <button class='menu-btn'>+ NEW BOOK</button>
         </div>
         <div class='book-container'>
             <div class='book'>
@@ -23,5 +23,31 @@
             </div>
         </div>
     </div>
+
+    <dialog>
+        <div class='dialog-title'>Add New Book</div>
+        <form>
+            <div class='form-row'>
+                <label for='title'><div>TITLE</div></label>
+                <input type='text' id='title' name='title' />
+            </div>
+            <div class='form-row'>
+                <label for='author'><div>AUTHOR</div></label>
+                <input type='text' id='author' name='author' />
+            </div>
+            <div class='form-row'>
+                <label for='pages'><div>PAGES</div></label>
+                <input type='text' id='pages' name='pages' />
+            </div>
+            <div class='form-row'>
+                <input type='checkbox' id='read' name='read' value='yes' />
+                <label for='read'>Already read</label>
+            </div>
+            <div class='btn-container'>
+                <button class='confirm-btn'>Confirm</button>
+                <button class='close-btn'>Close</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>

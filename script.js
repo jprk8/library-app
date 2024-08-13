@@ -41,3 +41,20 @@ for (const book of myLibrary) {
     showBook.appendChild(showRead);
     bookContainer.appendChild(showBook);
 }
+
+const dialog = document.querySelector('dialog');
+const addBtn = document.querySelector('.menu-btn');
+const closeBtn = document.querySelector('.close-btn');
+const confirmBtn = document.querySelector('.confirm-btn');
+
+addBtn.addEventListener('click', () => {
+    dialog.showModal();
+});
+
+closeBtn.addEventListener('click', () => {
+    dialog.close();
+});
+
+confirmBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+})

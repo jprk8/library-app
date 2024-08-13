@@ -8,7 +8,7 @@
 
 body {
     -webkit-font-smoothing: antialiased;
-    background-color: #222;
+    background-color: #444;
     color: #eee;
     font-family: serif;
 }
@@ -35,15 +35,22 @@ p, h1, h2, h3, h4, h5, h6 {
     grid-auto-flow: row;
     padding: 12px 24px;
     gap: 24px;
+    background-color: #444;
 }
 
 .header {
     font-size: 48px;
-    font-weight: 800;
+    font-weight: 1000;
+    letter-spacing: 10px;
+    background-color: #222;
+    border-bottom: 12px double #7f1d1d;
+    padding: 30px 20px;
+    margin-bottom: 24px;
 }
 
 .page-title {
     font-size: 32px;
+    font-weight: 800;
 }
 
 .main-menu {
@@ -53,15 +60,26 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .menu-btn {
-    height: 40px;
-    padding: 0 20px;
+    padding: 8px 24px;
     border-radius: 20px;
     font-weight: 800;
+    background-color: #dddddd;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-btn:hover {
+    background-color: #222;
+    color: #eee;
+}
+
+.menu-btn:active {
+    outline: 2px solid #eee;
 }
 
 .book-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(auto-fit, 290px);
     gap: 36px;
 }
 
@@ -69,7 +87,7 @@ p, h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     font-size: 18px;
-    border: 4px solid rgb(216, 190, 137);
+    border: 5px solid rgb(216, 190, 137);
     background-color: rgb(44, 32, 28);
     gap: 12px;
     padding: 20px;
@@ -81,12 +99,58 @@ p, h1, h2, h3, h4, h5, h6 {
     height: calc(28px * 4);
     text-transform: uppercase;
     overflow: hide;
+    margin-bottom: 20px;
 }
 
 .book .author {
     font-size: 20px;
+    font-style: italic;
 }
 
 .book .read {
     align-self: end;
+}
+
+/* CSS for dialog */
+::backdrop {
+    background-color: black;
+    opacity: 0.7;
+}
+
+dialog {
+    margin: 150px 380px;
+    background-color: #eee;
+    border-radius: 10% 25%;
+    width: 400px;
+}
+
+.dialog-title {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+dialog button {
+    padding: 4px 20px;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid #222;
+}
+
+dialog button:hover {
+    background-color: #222;
+    color: #eee;
+    cursor: pointer;
+}
+
+.btn-container {
+    align-self: end;
+    display: flex;
+    gap: 12px;
 }
