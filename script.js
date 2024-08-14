@@ -7,44 +7,68 @@ function Book(title, author, pages) {
     this.read = false;
 }
 
+//add Book prototype function to toggle read status
+Book.prototype.toggleRead = function() {
+    (this.read === false) ? this.read = true : this.read = false;
+}
+
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkiens', 295);
 const ender = new Book(`Ender's Game`, 'Orson Scott Card', 324);
-const morrie = new Book('Tuesdays with Morrie', 'Mitch Albom', 192);
+const mocking = new Book('To Kill a Mockingbird', 'Harper Lee', 281);
+ender.toggleRead();
+mocking.toggleRead();
 myLibrary.push(hobbit);
 myLibrary.push(ender);
-myLibrary.push(morrie);
+myLibrary.push(mocking);
 listBooks();
 
 // function to display book array as cards
+// recall this function to refresh the book container
 function listBooks () {
-    //remove all books in book-container in HTML to re-draw library
+    //remove all books in book-container in HTML to re-draw the library
     const bookContainer = document.querySelector('.book-container');
     const removeBooks = document.querySelectorAll('.book-container > .book');
     removeBooks.forEach((item) => {
         bookContainer.removeChild(item);
     })
 
-    let delIndex = 0;
+    let arrayIndex = 0;
     for (const book of myLibrary) {
         const bookContainer = document.querySelector('.book-container');
         const showBook = document.createElement('div');
         const showTitle = document.createElement('div');
         const showAuthor = document.createElement('div');
         const showPages = document.createElement('div');
-        const showRead = document.createElement('div');
 
-        //need to add class after createElement
+        //create togglable read status button
+        const showRead = document.createElement('button');
+        showRead.setAttribute('index', arrayIndex);
+        showRead.addEventListener('click', () => {
+            let i = showRead.getAttribute('index');
+            myLibrary[i].toggleRead();
+            listBooks();
+        });
+        const readStatus = document.createElement('span');
+        showRead.appendChild(readStatus);
+
         showBook.classList.add('book');
         showTitle.classList.add('title');
         showAuthor.classList.add('author');
         showPages.classList.add('pages');
-        showRead.classList.add('read');
 
         showTitle.textContent = book.title;
-        showAuthor.textContent = `by ${book.author}`
-        showPages.textContent = `${book.pages} pages`;
-        if (book.read == false) showRead.textContent = 'not read yet';
-        else showRead.textContent = 'read';
+        showAuthor.textContent = `By ${book.author}`
+        showPages.textContent = `Pages: ${book.pages}`;
+        if (book.read == false) {
+            showRead.classList.remove('read-btn');
+            showRead.classList.add('notread-btn');
+            readStatus.textContent = 'Not Read';
+        }
+        else {
+            showRead.classList.remove('notread-btn');
+            showRead.classList.add('read-btn');
+            readStatus.textContent = 'Done Reading';
+        }
         
         showBook.appendChild(showTitle);
         showBook.appendChild(showAuthor);
@@ -55,27 +79,28 @@ function listBooks () {
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('delete-btn');
         deleteBtn.textContent = 'Delete';
-        deleteBtn.setAttribute('index', delIndex);
+        deleteBtn.setAttribute('index', arrayIndex);
         deleteBtn.addEventListener('click', () => {
             myLibrary.splice(deleteBtn.getAttribute('index'), 1);
             listBooks();
         });
         showBook.appendChild(deleteBtn);
-        delIndex++;
+        arrayIndex++;
 
         bookContainer.appendChild(showBook);
     }
 }
 
 const dialog = document.querySelector('dialog');
-const addBtn = document.querySelector('.menu-btn');
-const closeBtn = document.querySelector('.close-btn');
-const confirmBtn = document.querySelector('.confirm-btn');
-
+const addForm = document.querySelector('form');
 const inputTitle = document.getElementById('title');
 const inputAuthor = document.getElementById('author');
 const inputPages = document.getElementById('pages');
 const inputRead = document.getElementById('read');
+
+const addBtn = document.querySelector('.menu-btn');
+const closeBtn = document.querySelector('.close-btn');
+const confirmBtn = document.querySelector('.confirm-btn');
 
 addBtn.addEventListener('click', () => {
     dialog.showModal();
@@ -87,14 +112,14 @@ closeBtn.addEventListener('click', (event) => {
 });
 
 confirmBtn.addEventListener('click', (event) => {
-    //newBook = Book(inputTitle.value, inputAuthor.value, inputPages.value);
     event.preventDefault();
-    const newBook = new Book(inputTitle.value, inputAuthor.value, inputPages.value);
-
-    if (newBook['title'] && newBook['author'] && newBook['pages']) {
+    addForm.reportValidity();
+    if (addForm.checkValidity()) {
+        const newBook = new Book(inputTitle.value, inputAuthor.value, inputPages.value);
+        if (inputRead.checked == true) newBook.toggleRead();
         myLibrary.push(newBook);
-        document.querySelector('form').reset();
+        addForm.reset();
         dialog.close();
         listBooks();
     }
-})
+});

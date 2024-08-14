@@ -8,7 +8,7 @@
 
 body {
     -webkit-font-smoothing: antialiased;
-    background-color: #444;
+    background-color: #525252;
     color: #eee;
     font-family: serif;
 }
@@ -33,8 +33,8 @@ p, h1, h2, h3, h4, h5, h6 {
 .container {
     display: grid;
     grid-auto-flow: row;
-    padding: 12px 24px;
-    background-color: #444;
+    padding: 24px;
+    background-color: #525252;
 }
 
 .header {
@@ -44,7 +44,6 @@ p, h1, h2, h3, h4, h5, h6 {
     background-color: #222;
     border-bottom: 12px double #7f1d1d;
     padding: 30px 20px;
-    margin-bottom: 20px;
 }
 
 .page-title {
@@ -63,56 +62,65 @@ p, h1, h2, h3, h4, h5, h6 {
     padding: 8px 24px;
     border-radius: 20px;
     font-weight: 800;
-    background-color: #dddddd;
+    background-color: #222;
+    color: #eee;
     border: none;
     cursor: pointer;
 }
 
 .menu-btn:hover {
-    background-color: #222;
-    color: #eee;
+    outline: 2px solid #eee;
 }
 
 .menu-btn:active {
-    outline: 2px solid #eee;
+    background-color: #eee;
+    color: #222;
 }
 
 .book-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 290px);
-    gap: 36px;
+    grid-template-columns: repeat(auto-fit, 280px);
+    gap: 30px;
 }
 
 .book {
     display: flex;
     flex-direction: column;
     font-size: 18px;
-    border: 5px solid rgb(216, 190, 137);
+    border: 6px solid rgb(216, 190, 137);
     background-color: rgb(44, 32, 28);
-    gap: 12px;
-    padding: 20px;
-    border-radius: 10% 25%;
+    gap: 10px;
+    padding: 20px 20px 30px;
+    border-radius: 5% 10% 40% 10%;
+    box-shadow: -4px 4px 6px rgb(29, 29, 29);
 }
 
 .book .title {
-    font-size: 28px;
+    align-self: start;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 800;
     height: calc(28px * 4);
     text-transform: uppercase;
     overflow: hide;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #eee;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .book .author {
     font-size: 20px;
     font-style: italic;
     text-transform: capitalize;
+    text-decoration: 3px overline;
 }
 
-.book .read {
-    align-self: end;
+.book .pages {
+    color: #ccc;
 }
 
-/* CSS for dialog */
 ::backdrop {
     background-color: black;
     opacity: 0.7;
@@ -183,20 +191,63 @@ input[type='checkbox'] {
 }
 
 .delete-btn {
-    background-color: #222;
+    align-self: start;
+    background-color: rgb(255, 59, 48);
     color: #eee;
-    padding: 4px 12px;
-    align-self: end;
-    font-size: 18px;
+    padding: 1px 4px;
+    font-size: 14px;
     border: 2px solid rgb(255, 59, 48);
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
+
+    font-family: sans-serif;
+    font-weight: 800;
 }
 
 .delete-btn:hover {
-    background-color: rgb(255, 59, 48);
+    outline: 1px solid white;
 }
 
 .delete-btn:active {
-    outline: 2px solid #eee;
+    background-color: #eee;
+    color: rgb(255, 59, 48);
+}
+
+.read-btn,
+.notread-btn {
+    width: 140px;
+    padding: 2px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.read-btn {
+    background-color: #166534;
+    color: #eee;
+}
+
+.read-btn:hover {
+    outline: 1px solid white;
+}
+
+.notread-btn {
+    background-color: #888;
+    color: #333;
+}
+
+.notread-btn:hover span {
+    display: none;
+}
+
+.notread-btn:hover:before {
+    content: 'Mark Read';
+}
+
+.notread-btn:hover {
+    outline: 1px solid white;
 }
