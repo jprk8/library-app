@@ -1,16 +1,18 @@
 const myLibrary = [];
 
-function Book(title, author, pages) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = false;
+class Book {
+    constructor(title, author, pages) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = false;
+    }
+
+    toggleRead() {
+        (this.read === false) ? this.read = true : this.read = false;
+    }
 }
 
-//add Book prototype function to toggle read status
-Book.prototype.toggleRead = function() {
-    (this.read === false) ? this.read = true : this.read = false;
-}
 
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkiens', 295);
 const ender = new Book(`Ender's Game`, 'Orson Scott Card', 324);

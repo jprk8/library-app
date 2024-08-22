@@ -45,7 +45,7 @@ p, h1, h2, h3, h4, h5, h6 {
     font-weight: 1000;
     letter-spacing: 10px;
     background-color: #222;
-    border-bottom: 12px double #7f1d1d;
+    border-bottom: 8px solid #7f1d1d;
     padding: 30px 20px;
 }
 
