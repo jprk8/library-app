@@ -23,9 +23,9 @@ myLibrary.push(mocking);
 listBooks();
 
 // function to display book array as cards
-// recall this function to refresh the book container
 function listBooks () {
-    //remove all books in book-container in HTML to re-draw the library
+    // remove all books in book-container in HTML to re-draw the library
+    // this function is called after adding a new book through dialog
     const bookContainer = document.querySelector('.book-container');
     const removeBooks = document.querySelectorAll('.book-container > .book');
     removeBooks.forEach((item) => {
@@ -40,18 +40,8 @@ function listBooks () {
         const showAuthor = document.createElement('div');
         const showPages = document.createElement('div');
 
-        //create togglable read status button
-        const showRead = document.createElement('button');
-        showRead.setAttribute('index', arrayIndex);
-        showRead.addEventListener('click', () => {
-            let i = showRead.getAttribute('index');
-            myLibrary[i].toggleRead();
-            listBooks();
-        });
-        const readStatus = document.createElement('span');
-        showRead.appendChild(readStatus);
-
         showBook.classList.add('book');
+        showBook.setAttribute('index', arrayIndex); // give each book an index attribute
         showTitle.classList.add('title');
         showAuthor.classList.add('author');
         showPages.classList.add('pages');
@@ -59,17 +49,34 @@ function listBooks () {
         showTitle.textContent = book.title;
         showAuthor.textContent = `By ${book.author}`
         showPages.textContent = `Pages: ${book.pages}`;
+        const showRead = document.createElement('button');
+
         if (book.read == false) {
-            showRead.classList.remove('read-btn');
             showRead.classList.add('notread-btn');
-            readStatus.textContent = 'Not Read';
+            showRead.textContent = 'Not Read';
         }
         else {
-            showRead.classList.remove('notread-btn');
             showRead.classList.add('read-btn');
-            readStatus.textContent = 'Done Reading';
+            showRead.textContent = 'Done Reading';
         }
-        
+
+        //create togglable read status button
+        showRead.setAttribute('index', arrayIndex);
+        showRead.addEventListener('click', () => {
+            let i = showRead.getAttribute('index');
+            myLibrary[i].toggleRead();
+            
+            if (myLibrary[i].read == false) {
+                showRead.classList.remove('read-btn');
+                showRead.classList.add('notread-btn');
+                showRead.textContent = 'Not Read';
+            } else {
+                showRead.classList.remove('notread-btn');
+                showRead.classList.add('read-btn');
+                showRead.textContent = 'Done Reading';
+            }
+        });
+
         showBook.appendChild(showTitle);
         showBook.appendChild(showAuthor);
         showBook.appendChild(showPages);
@@ -81,8 +88,10 @@ function listBooks () {
         deleteBtn.textContent = 'Delete';
         deleteBtn.setAttribute('index', arrayIndex);
         deleteBtn.addEventListener('click', () => {
-            myLibrary.splice(deleteBtn.getAttribute('index'), 1);
-            listBooks();
+            const i = deleteBtn.getAttribute('index');
+            myLibrary.splice(i, 1);
+            const delBook = document.querySelector(`.book[index='${i}']`);
+            bookContainer.removeChild(delBook);
         });
         showBook.appendChild(deleteBtn);
         arrayIndex++;

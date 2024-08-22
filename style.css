@@ -243,14 +243,6 @@ input[type='checkbox'] {
     color: #333;
 }
 
-.notread-btn:hover span {
-    display: none;
-}
-
-.notread-btn:hover:before {
-    content: 'Mark Read';
-}
-
 .notread-btn:hover {
     outline: 1px solid white;
 }
