@@ -13,7 +13,6 @@ class Book {
     }
 }
 
-
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkiens', 295);
 const ender = new Book(`Ender's Game`, 'Orson Scott Card', 324);
 const mocking = new Book('To Kill a Mockingbird', 'Harper Lee', 281);
@@ -102,6 +101,7 @@ function listBooks () {
     }
 }
 
+// function for New Book dialog
 const dialog = document.querySelector('dialog');
 const addForm = document.querySelector('form');
 const inputTitle = document.getElementById('title');
